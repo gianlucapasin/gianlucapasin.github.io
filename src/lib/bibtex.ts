@@ -10,6 +10,7 @@ export interface Publication {
   venue: string;
   details: string;
   links: { label: string; url: string }[];
+  url?: string;
   note?: string;
 }
 
@@ -70,15 +71,14 @@ export function parseBib(src: string): Publication[] {
     const vol = f.volume ? `${f.volume}${f.number ? `(${f.number})` : ''}` : '';
     const details = [vol, f.pages ? clean(f.pages) : ''].filter(Boolean).join(', ');
     const links: Publication['links'] = [];
-    if (f.doi) links.push({ label: 'DOI', url: `https://doi.org/${f.doi}` });
+    const url = f.doi ? `https://doi.org/${f.doi}` : f.url || undefined;
     if (f.pdf) links.push({ label: 'PDF', url: f.pdf });
     if (f.preprint) links.push({ label: 'Preprint', url: f.preprint });
     if (f.data) links.push({ label: 'Data', url: f.data });
     if (f.code) links.push({ label: 'Code', url: f.code });
-    if (f.url && !f.doi) links.push({ label: 'Link', url: f.url });
 
     out.push({
-      key: m[2], type,
+      key: m[2], type, url,
       title: clean(f.title || ''),
       authors: (f.author || '').split(/\s+and\s+/).map(formatAuthor),
       year: Number(f.year) || 0,
