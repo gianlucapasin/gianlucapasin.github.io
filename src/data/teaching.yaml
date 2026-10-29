@@ -1,11 +1,21 @@
-# Corsi insegnati.
+# Corsi insegnati, dal più recente.
 - id: quant-methods-sorbonne
   course: Quantitative Methods
   institution: Sorbonne University Abu Dhabi
-  level: "[DA COMPLETARE: BA / MA]"
-  years: "[DA COMPLETARE: anni]"
-  description: "[DA COMPLETARE: breve descrizione del corso, ruolo (titolare/TA), syllabus]"
-- id: placeholder
-  course: "[DA COMPLETARE: altro corso]"
-  institution: "[DA COMPLETARE]"
-  years: "[DA COMPLETARE]"
+  level: BA in Records Management and Archival Science
+  years: 2025/2026, second trimester
+- id: data-analysis-turin
+  course: Data Analysis
+  institution: University of Turin
+  level: BA in Social and Political Sciences
+  years: 2022/2023, first trimester
+- id: applied-economics-cca
+  course: Applied Economics
+  institution: Collegio Carlo Alberto
+  level: Allievi Honors Program in Social and Political Sciences (second year)
+  years: 2021/2022, second semester
+- id: sociology-milan
+  course: Sociology
+  institution: University of Milan
+  level: BA in Political Sciences
+  years: 2020/2021, second trimester

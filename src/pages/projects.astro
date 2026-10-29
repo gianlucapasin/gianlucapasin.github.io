@@ -13,8 +13,8 @@ const projects = (await getCollection('projects')).sort((a, b) => a.data.order -
       <article class="card">
         <h2 set:html={mark(d.title)} />
         <p class="muted">
-          <Fragment set:html={mark(d.period)} />
-          {d.role && <> · {d.role}</>}
+          {d.period && <Fragment set:html={mark(d.period)} />}
+          {d.role && <>{d.period && ' · '}{d.role}</>}
           {d.funder && <> · Funded by <Fragment set:html={mark(d.funder)} /></>}
         </p>
         <Content />

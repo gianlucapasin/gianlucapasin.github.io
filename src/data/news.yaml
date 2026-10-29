@@ -1,16 +1,13 @@
 # Novità: aggiungi una voce in cima. In home appaiono le 5 più recenti (ordinate per data).
-- id: esr-2026
-  date: 2026-05-01
-  text: "Our experimental study on institutions and social norms of tax payment is out in European Sociological Review. [DA COMPLETARE: verifica data]"
-  url: /publications/
-- id: asr-2026
-  date: 2026-09-01
-  text: "Global Social Norms project: new paper in American Sociological Review on how norms depend on observers across 90 societies. [DA COMPLETARE: verifica data]"
-  url: /publications/
-- id: rr-tipping
-  date: 2026-10-01
-  text: "Revise & resubmit at Humanities and Social Sciences Communications for our framework on designing social tipping interventions. [DA COMPLETARE: verifica data]"
+- id: venice-workshop-2026
+  date: 2026-10-20
+  text: "Presented \"Institutions and metanorms: evidence across countries and U.S. states\" at the Workshop on Social Norms and Cooperation in Venice, organised by Laura Marcon, Giulia Andrighetto and Andrea Gradassi."
   url: /work-in-progress/
-- id: placeholder
-  date: 2026-10-15
-  text: "[DA COMPLETARE: nuova notizia – talk, conferenza, grant…]"
+- id: preprint-climate-actions
+  date: 2026-10-10
+  text: "New preprint: \"Understanding climate actions: the cost–impact trade-off\" (with Eva Vriens)."
+  url: https://doi.org/10.31235/osf.io/t64vq_v1
+- id: preprint-social-tipping
+  date: 2026-10-01
+  text: "New preprint: \"Designing social tipping interventions: a systematic framework for scaling up behavioural change\"."
+  url: https://doi.org/10.31235/osf.io/xfh93_v2

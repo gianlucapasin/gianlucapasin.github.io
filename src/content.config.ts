@@ -50,7 +50,7 @@ const projects = defineCollection({
   loader: glob({ pattern: '*.md', base: 'src/data/projects' }),
   schema: z.object({
     title: z.string(),
-    period: z.string(),
+    period: z.string().optional(),
     role: z.string().optional(),
     funder: z.string().optional(),
     partners: z.array(z.string()).default([]),
