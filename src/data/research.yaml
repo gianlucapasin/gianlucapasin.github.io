@@ -1,0 +1,17 @@
+# Temi di ricerca, mostrati in base a "order".
+- id: norms
+  order: 1
+  title: Social norms and metanorms
+  description: How shared expectations about what others do and approve of shape behaviour, and how metanorms (norms about enforcing norms) sustain them across institutions, countries and U.S. states. [DA COMPLETARE]
+- id: cooperation
+  order: 2
+  title: Cooperation
+  description: The conditions under which people contribute to collective goods, from tax compliance to collective climate action, and how institutions interact with informal norms. [DA COMPLETARE]
+- id: punishment
+  order: 3
+  title: Punishment
+  description: Why norms sometimes fail to emerge, who is willing to sanction violations, and when enforcement is expected or withheld ("guarded absence"). [DA COMPLETARE]
+- id: climate
+  order: 4
+  title: Climate action and social tipping
+  description: Designing and testing social tipping interventions that scale up behavioural change, the cost–impact trade-off of climate actions, and how the public divides responsibility for mitigation, adaptation and justice. [DA COMPLETARE]

@@ -1,0 +1,100 @@
+---
+import { getEntry } from 'astro:content';
+import { getImage } from 'astro:assets';
+import photo from '../assets/photo.jpg';
+import '../styles/global.css';
+
+interface Props { title?: string; description?: string; }
+const { title, description } = Astro.props;
+const me = (await getEntry('profile', 'me'))!.data;
+
+const pageTitle = title ? `${title} · ${me.name}` : `${me.name} · ${me.title}`;
+const desc = description ?? me.description;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const og = await getImage({ src: photo, width: 600, height: 600, format: 'jpeg' });
+const ogImage = new URL(og.src, Astro.site);
+
+const nav = [
+  ['/', 'Home'],
+  ['/research/', 'Research'],
+  ['/publications/', 'Publications'],
+  ['/work-in-progress/', 'Work in Progress'],
+  ['/projects/', 'Projects'],
+  ['/teaching/', 'Teaching'],
+  ['/cv/', 'CV'],
+];
+const path = Astro.url.pathname;
+
+const person = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: me.name,
+  jobTitle: me.title,
+  affiliation: { '@type': 'Organization', name: me.affiliation, url: me.affiliationUrl },
+  url: Astro.site?.toString(),
+  image: ogImage.toString(),
+  sameAs: me.links.filter((l) => l.url.startsWith('http')).map((l) => l.url),
+};
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{pageTitle}</title>
+  <meta name="description" content={desc} />
+  <meta name="author" content={me.name} />
+  <link rel="canonical" href={canonical} />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="sitemap" href="/sitemap-index.xml" />
+  <meta name="color-scheme" content="light dark" />
+
+  <meta property="og:type" content="profile" />
+  <meta property="og:title" content={pageTitle} />
+  <meta property="og:description" content={desc} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:image" content={ogImage} />
+  <meta name="twitter:card" content="summary" />
+
+  <script type="application/ld+json" set:html={JSON.stringify(person)} />
+  <script is:inline>
+    try {
+      const t = localStorage.getItem('theme');
+      if (t) document.documentElement.dataset.theme = t;
+    } catch {}
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="/">{me.name}</a>
+      <nav aria-label="Main">
+        <ul>
+          {nav.map(([href, label]) => (
+            <li><a href={href} aria-current={path === href ? 'page' : undefined}>{label}</a></li>
+          ))}
+        </ul>
+      </nav>
+      <button id="theme-toggle" type="button" aria-label="Toggle dark mode">◐</button>
+    </div>
+  </header>
+  <main id="main" class="wrap">
+    {title && <h1>{title}</h1>}
+    <slot />
+  </main>
+  <footer class="wrap site-footer">
+    <p>© {new Date().getFullYear()} {me.name} · {me.affiliation}</p>
+  </footer>
+  <script is:inline>
+    document.getElementById('theme-toggle').addEventListener('click', () => {
+      const root = document.documentElement;
+      const dark = root.dataset.theme
+        ? root.dataset.theme === 'dark'
+        : matchMedia('(prefers-color-scheme: dark)').matches;
+      root.dataset.theme = dark ? 'light' : 'dark';
+      try { localStorage.setItem('theme', root.dataset.theme); } catch {}
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.astro/
+~$*
+*.docx
+My photo.jpg
+CV_Pasin.pdf

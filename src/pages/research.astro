@@ -1,0 +1,16 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import { mark } from '../lib/todo';
+
+const topics = (await getCollection('research')).sort((a, b) => a.data.order - b.data.order);
+---
+<Base title="Research" description="Research themes of Gian Luca Pasin: social norms and metanorms, cooperation, punishment, climate action and social tipping.">
+  {topics.map(({ data }) => (
+    <section>
+      <h2>{data.title}</h2>
+      <p set:html={mark(data.description)} />
+    </section>
+  ))}
+  <p class="muted">See also <a href="/publications/">Publications</a> and <a href="/work-in-progress/">Work in Progress</a>.</p>
+</Base>

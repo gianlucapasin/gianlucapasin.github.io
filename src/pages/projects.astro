@@ -1,0 +1,28 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import { mark, isTodo } from '../lib/todo';
+
+const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+---
+<Base title="Projects" description="Research projects Gian Luca Pasin is involved in.">
+  {projects.map(async (p) => {
+    const { Content } = await render(p);
+    const d = p.data;
+    return (
+      <article class="card">
+        <h2 set:html={mark(d.title)} />
+        <p class="muted">
+          <Fragment set:html={mark(d.period)} />
+          {d.role && <> · {d.role}</>}
+          {d.funder && <> · Funded by <Fragment set:html={mark(d.funder)} /></>}
+        </p>
+        <Content />
+        {d.partners.length > 0 && <p><strong>Partners:</strong> <Fragment set:html={mark(d.partners.join(' · '))} /></p>}
+        {d.url && (isTodo(d.url)
+          ? <p set:html={mark(`Website: ${d.url}`)} />
+          : <p><a href={d.url}>Project website →</a></p>)}
+      </article>
+    );
+  })}
+</Base>

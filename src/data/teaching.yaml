@@ -1,0 +1,11 @@
+# Corsi insegnati.
+- id: quant-methods-sorbonne
+  course: Quantitative Methods
+  institution: Sorbonne University Abu Dhabi
+  level: "[DA COMPLETARE: BA / MA]"
+  years: "[DA COMPLETARE: anni]"
+  description: "[DA COMPLETARE: breve descrizione del corso, ruolo (titolare/TA), syllabus]"
+- id: placeholder
+  course: "[DA COMPLETARE: altro corso]"
+  institution: "[DA COMPLETARE]"
+  years: "[DA COMPLETARE]"

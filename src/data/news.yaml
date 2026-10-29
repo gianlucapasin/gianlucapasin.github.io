@@ -1,0 +1,16 @@
+# Novità: aggiungi una voce in cima. In home appaiono le 5 più recenti (ordinate per data).
+- id: esr-2026
+  date: 2026-05-01
+  text: "Our experimental study on institutions and social norms of tax payment is out in European Sociological Review. [DA COMPLETARE: verifica data]"
+  url: /publications/
+- id: asr-2026
+  date: 2026-09-01
+  text: "Global Social Norms project: new paper in American Sociological Review on how norms depend on observers across 90 societies. [DA COMPLETARE: verifica data]"
+  url: /publications/
+- id: rr-tipping
+  date: 2026-10-01
+  text: "Revise & resubmit at Humanities and Social Sciences Communications for our framework on designing social tipping interventions. [DA COMPLETARE: verifica data]"
+  url: /work-in-progress/
+- id: placeholder
+  date: 2026-10-15
+  text: "[DA COMPLETARE: nuova notizia – talk, conferenza, grant…]"

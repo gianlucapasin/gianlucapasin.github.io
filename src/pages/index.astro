@@ -1,0 +1,48 @@
+---
+import { Image } from 'astro:assets';
+import { getCollection, getEntry } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import photo from '../assets/photo.jpg';
+import { mark } from '../lib/todo';
+
+const me = (await getEntry('profile', 'me'))!.data;
+const news = (await getCollection('news'))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .slice(0, 5);
+const fmt = (d: Date) => d.toLocaleDateString('en-GB', { month: 'short', year: 'numeric' });
+---
+<Base>
+  <section class="hero">
+    <Image src={photo} alt={`Portrait of ${me.name}`} width={360} height={360} loading="eager" />
+    <div>
+      <h1>{me.name}</h1>
+      <p class="muted">
+        {me.title} · Postdoctoral researcher<br />
+        <a href={me.affiliationUrl}>{me.affiliation}</a>{me.location && <> · {me.location}</>}
+      </p>
+      <ul class="links">
+        {me.links.map((l) => <li><a href={l.url} rel="me noopener">{l.label}</a></li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>About</h2>
+    {me.bio.trim().split('\n').map((p) => <p set:html={mark(p)} />)}
+  </section>
+
+  <section>
+    <h2>News</h2>
+    <ul class="news">
+      {news.map(({ data }) => (
+        <li>
+          <time datetime={data.date.toISOString().slice(0, 10)}>{fmt(data.date)}</time>
+          <span>
+            <Fragment set:html={mark(data.text)} />
+            {data.url && <> <a href={data.url}>→</a></>}
+          </span>
+        </li>
+      ))}
+    </ul>
+  </section>
+</Base>

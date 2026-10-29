@@ -1,0 +1,29 @@
+---
+import Base from '../layouts/Base.astro';
+import { loadPublications } from '../lib/bibtex';
+
+const pubs = loadPublications();
+const years = [...new Set(pubs.map((p) => p.year))];
+---
+<Base title="Publications" description="Peer-reviewed publications of Gian Luca Pasin.">
+  <p class="muted">Papers under review and in preparation are listed in <a href="/work-in-progress/">Work in Progress</a>.</p>
+  {years.map((year) => (
+    <section>
+      <h2>{year}</h2>
+      <ol class="items">
+        {pubs.filter((p) => p.year === year).map((p) => (
+          <li>
+            {p.authors.map((a, i) => (
+              <>{a.me ? <span class="me">{a.name}</span> : a.name}{i < p.authors.length - 1 ? ', ' : ' '}</>
+            ))}
+            ({p.year}). {p.title}. <span class="venue">{p.venue}</span>{p.details && `, ${p.details}`}.
+            {p.note && <span class="tag">{p.note}</span>}
+            {p.links.length > 0 && (
+              <span class="badges">{p.links.map((l) => <a href={l.url}>{l.label}</a>)}</span>
+            )}
+          </li>
+        ))}
+      </ol>
+    </section>
+  ))}
+</Base>

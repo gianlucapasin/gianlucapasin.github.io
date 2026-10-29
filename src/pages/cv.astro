@@ -1,0 +1,11 @@
+---
+import Base from '../layouts/Base.astro';
+
+// To update the CV, replace public/cv/CV_Pasin.pdf (keep the same name).
+const cv = '/cv/CV_Pasin.pdf';
+---
+<Base title="CV" description="Curriculum vitae of Gian Luca Pasin.">
+  <p><a class="button" href={cv} download>Download CV (PDF)</a></p>
+  <iframe class="pdf-frame" src={cv} title="Curriculum vitae (PDF)"></iframe>
+  <p class="muted">If the preview does not load, <a href={cv}>open the PDF directly</a>.</p>
+</Base>

@@ -1,0 +1,18 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+
+const papers = await getCollection('wip');
+const highlight = (s: string) => s.split(/(Pasin, G\. ?L\.)/);
+---
+<Base title="Work in Progress" description="Papers under review and in preparation by Gian Luca Pasin.">
+  <ul class="items">
+    {papers.map(({ data }) => (
+      <li>
+        {highlight(data.authors).map((part) => part.startsWith('Pasin') ? <span class="me">{part}</span> : part)}
+        {' '}{data.url ? <a href={data.url}>{data.title}</a> : data.title}.
+        {' '}<span class="tag">{data.status}</span>
+      </li>
+    ))}
+  </ul>
+</Base>

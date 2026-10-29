@@ -1,0 +1,25 @@
+# Dati personali: modifica qui bio, affiliazione e link.
+- id: me
+  name: Gian Luca Pasin
+  title: Economic Sociologist
+  affiliation: LABSS – Institute of Cognitive Sciences and Technologies, CNR
+  affiliationUrl: https://labss.istc.cnr.it/
+  location: Rome, Italy
+  description: Gian Luca Pasin is an economic sociologist and postdoctoral researcher at LABSS-CNR, studying social norms, metanorms, cooperation, punishment and social tipping for climate action.
+  bio: |
+    I am an economic sociologist and postdoctoral researcher at the Laboratory of Agent Based Social Simulation (LABSS) of the Italian National Research Council (CNR).
+    My research studies how social norms and metanorms emerge, are enforced and change, with a focus on cooperation, punishment and social tipping interventions for climate action.
+    I combine experiments, cross-national surveys and systematic reviews. [DA COMPLETARE: dottorato, percorso, ecc.]
+  links:
+    - label: Email
+      url: "mailto:[DA COMPLETARE]"
+    - label: Google Scholar
+      url: "https://scholar.google.com/citations?user=[DA COMPLETARE]"
+    - label: ORCID
+      url: "https://orcid.org/[DA COMPLETARE]"
+    - label: GitHub
+      url: "https://github.com/[DA COMPLETARE]"
+    - label: LinkedIn
+      url: "https://www.linkedin.com/in/[DA COMPLETARE]"
+    - label: Bluesky
+      url: "https://bsky.app/profile/[DA COMPLETARE]"

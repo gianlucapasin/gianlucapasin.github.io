@@ -1,0 +1,22 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import { mark } from '../lib/todo';
+
+const courses = await getCollection('teaching');
+---
+<Base title="Teaching" description="Courses taught by Gian Luca Pasin.">
+  <ul class="items">
+    {courses.map(({ data }) => (
+      <li>
+        <h3 set:html={mark(data.course)} />
+        <p class="muted">
+          <Fragment set:html={mark(data.institution)} />
+          {data.level && <> · <Fragment set:html={mark(data.level)} /></>}
+          {' · '}<Fragment set:html={mark(data.years)} />
+        </p>
+        {data.description && <p set:html={mark(data.description)} />}
+      </li>
+    ))}
+  </ul>
+</Base>
