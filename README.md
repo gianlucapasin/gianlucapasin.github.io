@@ -13,7 +13,6 @@ Sito accademico personale (Astro), pubblicato su GitHub Pages a ogni push su `ma
 | Work in progress | `src/data/wip.yaml` |
 | Progetti | un file `.md` per progetto in `src/data/projects/` |
 | Insegnamento | `src/data/teaching.yaml` |
-| CV | sostituisci `public/cv/CV_Pasin.pdf` |
 | Foto | `src/assets/photo.jpg` |
 
 I segnaposto `[DA COMPLETARE]` sono evidenziati in giallo sul sito finché non li sostituisci.
