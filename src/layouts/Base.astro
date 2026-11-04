@@ -8,7 +8,7 @@ interface Props { title?: string; description?: string; }
 const { title, description } = Astro.props;
 const me = (await getEntry('profile', 'me'))!.data;
 
-const pageTitle = title ? `${title} · ${me.name}` : `${me.name} · ${me.title}`;
+const pageTitle = title ? `${title} · ${me.name}` : me.name;
 const desc = description ?? me.description;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const og = await getImage({ src: photo, width: 600, height: 600, format: 'jpeg' });
@@ -23,6 +23,13 @@ const nav = [
   ['/teaching/', 'Teaching'],
 ];
 const path = Astro.url.pathname;
+
+const website = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: me.name,
+  url: Astro.site?.toString(),
+};
 
 const person = {
   '@context': 'https://schema.org',
@@ -49,6 +56,7 @@ const person = {
   <link rel="sitemap" href="/sitemap-index.xml" />
   <meta name="color-scheme" content="light dark" />
 
+  <meta property="og:site_name" content={me.name} />
   <meta property="og:type" content="profile" />
   <meta property="og:title" content={pageTitle} />
   <meta property="og:description" content={desc} />
@@ -57,6 +65,7 @@ const person = {
   <meta name="twitter:card" content="summary" />
 
   <script type="application/ld+json" set:html={JSON.stringify(person)} />
+  <script type="application/ld+json" set:html={JSON.stringify(website)} />
   <script is:inline>
     try {
       const t = localStorage.getItem('theme');
